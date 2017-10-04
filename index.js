@@ -154,6 +154,12 @@ module.exports = module.exports = {
 
                 if (!e.target.checked) {
                     this.reset();
+
+                    // Turn info click back on
+                    backboneEvents.get().trigger("on:infoClick");
+                } else {
+                    // Turn info click off
+                    backboneEvents.get().trigger("off:infoClick");
                 }
 
             }
