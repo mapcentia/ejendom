@@ -49,7 +49,7 @@ var mapObj;
  *
  * @type {*|exports|module.exports}
  */
-var search = require('./../../search/danish');
+var search = require('./../../../browser/modules/search/danish');
 
 var store = new geocloud.sqlStore({
     jsonp: false,
@@ -381,7 +381,7 @@ module.exports = module.exports = {
             }
         }
 
-        utils.createMainTab(exId, "Ejendom", "Info", require('./../../height')().max);
+        utils.createMainTab(exId, "Ejendom", "Info", require('./../../../browser/modules/height')().max);
 
         // Append to DOM
         //==============
