@@ -321,7 +321,7 @@ module.exports = module.exports = {
                                 <div className="form-group">
                                     <div className="togglebutton">
                                         <label><input id="ejendom-btn" type="checkbox"
-                                                      defaultChecked={ this.state.active } onChange={this.onActive}/>Aktiver</label>
+                                                      defaultChecked={ this.state.active } onChange={this.onActive}/>Aktiver klik i kortet</label>
                                     </div>
                                 </div>
 
@@ -381,7 +381,7 @@ module.exports = module.exports = {
             }
         }
 
-        utils.createMainTab(exId, "Ejendom", "Info", require('./../../../browser/modules/height')().max);
+        utils.createMainTab(exId, "Ejendom", "Se Samlede Faste Ejendomme. Aktiver 'Klik i kortet' og klik hvor du vil fremsøge ejendommen. Eller søg på adresse eller matrikelnr. I tabellen vises hvilke jordstykker ejendommen består af. ", require('./../../../browser/modules/height')().max);
 
         // Append to DOM
         //==============
