@@ -206,10 +206,7 @@ module.exports = module.exports = {
                     });
 
                     if (zoom) {
-                        cloud.get().zoomToExtentOfgeoJsonStore(this);
-                        if (mapObj.getZoom() >= 17) {
-                            mapObj.setZoom(17);
-                        }
+                        cloud.get().zoomToExtentOfgeoJsonStore(this, 18);
                     }
                     me.setState({});
                     me.setState({
