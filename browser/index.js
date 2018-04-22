@@ -206,10 +206,7 @@ module.exports = module.exports = {
                     });
 
                     if (zoom) {
-                        cloud.get().zoomToExtentOfgeoJsonStore(this);
-                        if (mapObj.getZoom() >= 17) {
-                            mapObj.setZoom(17);
-                        }
+                        cloud.get().zoomToExtentOfgeoJsonStore(this, 17);
                     }
                     me.setState({});
                     me.setState({
@@ -230,6 +227,14 @@ module.exports = module.exports = {
 
             componentDidMount() {
                 var me = this;
+
+                // Listen and reacting to the global Reset ALL event
+                backboneEvents.get().on("reset:all", function () {
+                    me.setState({
+                        active: false
+                    });
+                    me.reset();
+                });
 
                 (function poll() {
                     if (gc2table.isLoaded()) {
@@ -321,7 +326,7 @@ module.exports = module.exports = {
                                 <div className="form-group">
                                     <div className="togglebutton">
                                         <label><input id="ejendom-btn" type="checkbox"
-                                                      defaultChecked={ this.state.active } onChange={this.onActive}/>Aktiver klik i kortet</label>
+                                                      checked={ this.state.active } onChange={this.onActive}/>Aktiver klik i kortet</label>
                                     </div>
                                 </div>
 
