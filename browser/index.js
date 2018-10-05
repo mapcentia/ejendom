@@ -321,66 +321,62 @@ module.exports = module.exports = {
                 return (
 
                     <div role="tabpanel">
-                        <div className="panel panel-default">
-                            <div className="panel-body">
-                                <div className="form-group">
-                                    <div className="togglebutton">
-                                        <label><input id="ejendom-btn" type="checkbox"
-                                                      checked={ this.state.active } onChange={this.onActive}/>Aktiver klik i kortet</label>
-                                    </div>
-                                </div>
-
-                                <div id="conflict-places" className="places" style={this.marginBottomXl}>
-                                    <input id="ejendom-custom-search"
-                                           className="ejendom-custom-search typeahead" type="text"
-                                           placeholder="Adresse eller matrikelnr."/>
-                                </div>
-                                {
-                                    this.state.tlVisible
-                                        ?
-                                        <div>
-                                            <div style={this.marginBottomL}>
-                                                <span>Fundet matrikelnr.: </span><span>{this.state.matTxt}</span>
-                                            </div>
-
-                                            <div style={this.marginBottomS}>
-
-                                                <button className="btn btn-raised" onClick={this.onLookUp}>Start
-                                                    TLExplorer
-                                                </button>
-
-                                                <button className="btn btn-raised btn-danger" onClick={this.reset}>Ryd
-                                                </button>
-
-                                            </div>
-
-                                            <div style={this.marginBottomS}>
-                                                <span>Sagsid for ejendommen: </span><span>{this.state.sagsId}</span>
-                                            </div>
-
-                                            <div style={this.marginBottomS}>
-                                                <span>Seneste ændringsdato for ejendommen: </span><span>{this.state.regDat}</span>
-                                            </div>
-
-                                            <div style={this.marginBottomS}>
-                                                <span>Følgende matr.nre. er en samlet fast ejendom med Noteringstype: </span><span>{this.state.notTxt}</span>
-                                            </div>
-
-                                        </div> : null
-                                }
-                                <div>
-                                    <table id="gc2-ejd-table" className="table" data-detail-view="true"
-                                           data-detail-formatter="detailFormatter"
-                                           data-show-toggle="true"
-                                           data-show-export="true"/>
-                                </div>
-                                <div>
-                                    {this.state.ejdRes}
-                                </div>
-
-
+                        <div className="form-group">
+                            <div className="togglebutton">
+                                <label><input id="ejendom-btn" type="checkbox"
+                                              checked={this.state.active} onChange={this.onActive}/>Aktiver klik i
+                                    kortet</label>
                             </div>
                         </div>
+                        <div id="conflict-places" className="places" style={this.marginBottomXl}>
+                            <input id="ejendom-custom-search"
+                                   className="ejendom-custom-search typeahead" type="text"
+                                   placeholder="Adresse eller matrikelnr."/>
+                        </div>
+                        {
+                            this.state.tlVisible
+                                ?
+                                <div>
+                                    <div style={this.marginBottomL}>
+                                        <span>Fundet matrikelnr.: </span><span>{this.state.matTxt}</span>
+                                    </div>
+
+                                    <div style={this.marginBottomS}>
+
+                                        <button className="btn btn-raised" onClick={this.onLookUp}>Start
+                                            TLExplorer
+                                        </button>
+
+                                        <button className="btn btn-raised btn-danger" onClick={this.reset}>Ryd
+                                        </button>
+
+                                    </div>
+
+                                    <div style={this.marginBottomS}>
+                                        <span>Sagsid for ejendommen: </span><span>{this.state.sagsId}</span>
+                                    </div>
+
+                                    <div style={this.marginBottomS}>
+                                        <span>Seneste ændringsdato for ejendommen: </span><span>{this.state.regDat}</span>
+                                    </div>
+
+                                    <div style={this.marginBottomS}>
+                                        <span>Følgende matr.nre. er en samlet fast ejendom med Noteringstype: </span><span>{this.state.notTxt}</span>
+                                    </div>
+
+                                </div> : null
+                        }
+                        <div>
+                            <table id="gc2-ejd-table" className="table" data-detail-view="true"
+                                   data-detail-formatter="detailFormatter"
+                                   data-show-toggle="true"
+                                   data-show-export="true"/>
+                        </div>
+                        <div>
+                            {this.state.ejdRes}
+                        </div>
+
+
                     </div>
                 );
             }
@@ -393,14 +389,12 @@ module.exports = module.exports = {
         try {
 
             ReactDOM.render(
-                <Ejendom />,
+                <Ejendom/>,
                 document.getElementById(exId)
             );
         } catch (e) {
 
         }
-
     }
 };
-
 
