@@ -268,6 +268,7 @@ module.exports = module.exports = {
                             locale: window._vidiLocale.replace("_", "-")
                         });
 
+
                     } else {
                         setTimeout(poll, 20);
                     }
@@ -382,7 +383,7 @@ module.exports = module.exports = {
             }
         }
 
-        utils.createMainTab(exId, "Ejendom", "Se Samlede Faste Ejendomme. Aktiver 'Klik i kortet' og klik hvor du vil fremsøge ejendommen. Eller søg på adresse eller matrikelnr. I tabellen vises hvilke jordstykker ejendommen består af. ", require('./../../../browser/modules/height')().max);
+        utils.createMainTab(exId, "Ejendom", "Se Samlede Faste Ejendomme. Aktiver 'Klik i kortet' og klik hvor du vil fremsøge ejendommen. Eller søg på adresse eller matrikelnr. I tabellen vises hvilke jordstykker ejendommen består af. ", require('./../../../browser/modules/height')().max, "home");
 
         // Append to DOM
         //==============
