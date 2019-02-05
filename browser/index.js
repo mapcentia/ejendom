@@ -130,7 +130,6 @@ module.exports = module.exports = {
                     tlVisible: false
                 };
 
-                this.onActive = this.onActive.bind(this);
                 this.onLookUp = this.onLookUp.bind(this);
                 this.reset = this.reset.bind(this);
 
@@ -144,23 +143,6 @@ module.exports = module.exports = {
                 this.marginBottomS = {
                     marginBottom: "6px"
                 };
-
-            }
-
-            onActive(e) {
-                this.setState({
-                    active: e.target.checked
-                });
-
-                if (!e.target.checked) {
-                    this.reset();
-
-                    // Turn info click back on
-                    backboneEvents.get().trigger("on:infoClick");
-                } else {
-                    // Turn info click off
-                    backboneEvents.get().trigger("off:infoClick");
-                }
 
             }
 
@@ -228,12 +210,26 @@ module.exports = module.exports = {
             componentDidMount() {
                 var me = this;
 
-                // Listen and reacting to the global Reset ALL event
-                backboneEvents.get().on("reset:all", function () {
+                // Stop listening to any events, deactivate controls, but
+                // keep effects of the module until they are deleted manually or reset:all is emitted
+                backboneEvents.get().on("deactivate:all", () => {});
+
+                // Activates module
+                backboneEvents.get().on(`on:${exId}`, () => {
+                    me.setState({
+                        active: true
+                    });
+                    utils.cursorStyle().crosshair();
+                });
+
+                // Deactivates module
+                backboneEvents.get().on(`off:${exId} off:all reset:all`, () => {
                     me.setState({
                         active: false
                     });
+                    utils.cursorStyle().reset();
                     me.reset();
+
                 });
 
                 (function poll() {
@@ -322,13 +318,6 @@ module.exports = module.exports = {
                 return (
 
                     <div role="tabpanel">
-                        <div className="form-group">
-                            <div className="togglebutton">
-                                <label><input id="ejendom-btn" type="checkbox"
-                                              checked={this.state.active} onChange={this.onActive}/>Aktiver klik i
-                                    kortet</label>
-                            </div>
-                        </div>
                         <div id="conflict-places" className="places" style={this.marginBottomXl}>
                             <input id="ejendom-custom-search"
                                    className="ejendom-custom-search typeahead" type="text"
@@ -383,7 +372,7 @@ module.exports = module.exports = {
             }
         }
 
-        utils.createMainTab(exId, "Ejendom", "Se Samlede Faste Ejendomme. Aktiver 'Klik i kortet' og klik hvor du vil fremsøge ejendommen. Eller søg på adresse eller matrikelnr. I tabellen vises hvilke jordstykker ejendommen består af. ", require('./../../../browser/modules/height')().max, "home");
+        utils.createMainTab(exId, "Ejendom", "Se Samlede Faste Ejendomme. Aktiver 'Klik i kortet' og klik hvor du vil fremsøge ejendommen. Eller søg på adresse eller matrikelnr. I tabellen vises hvilke jordstykker ejendommen består af. ", require('./../../../browser/modules/height')().max, "home", false, exId);
 
         // Append to DOM
         //==============
