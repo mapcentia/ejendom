@@ -166,7 +166,7 @@ module.exports = module.exports = {
             makeSearch(geojson, zoom) {
                 var me = this, properties, area = 0, count = 0,
                     str = JSON.stringify(geojson),
-                    sql = "SELECT * FROM matrikel.jordstykke WHERE esr_ejendomsnummer = (SELECT esr_ejendomsnummer FROM matrikel.jordstykke WHERE the_geom && ST_PointOnSurface(ST_Transform(St_setSrid(ST_GeomFromGeoJSON('" + str + "'),4326),25832)) AND ST_Intersects(the_geom, ST_PointOnSurface(ST_Transform(St_setSrid(ST_GeomFromGeoJSON('" + str + "'),4326),25832))) LIMIT 1) ORDER BY ST_Distance(ST_PointOnSurface(ST_Transform(St_setSrid(ST_GeomFromGeoJSON('" + str + "'),4326),25832)), the_geom)";
+                    sql = "SELECT * FROM matrikel.jordstykke WHERE sfe_ejendomsnummer = (SELECT sfe_ejendomsnummer FROM matrikel.jordstykke WHERE the_geom && ST_PointOnSurface(ST_Transform(St_setSrid(ST_GeomFromGeoJSON('" + str + "'),4326),25832)) AND ST_Intersects(the_geom, ST_PointOnSurface(ST_Transform(St_setSrid(ST_GeomFromGeoJSON('" + str + "'),4326),25832))) LIMIT 1) ORDER BY ST_Distance(ST_PointOnSurface(ST_Transform(St_setSrid(ST_GeomFromGeoJSON('" + str + "'),4326),25832)), the_geom)";
 
                 store.reset();
 
