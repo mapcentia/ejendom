@@ -212,7 +212,8 @@ module.exports = module.exports = {
 
                 // Stop listening to any events, deactivate controls, but
                 // keep effects of the module until they are deleted manually or reset:all is emitted
-                backboneEvents.get().on("deactivate:all", () => {});
+                backboneEvents.get().on("deactivate:all", () => {
+                });
 
                 // Activates module
                 backboneEvents.get().on(`on:${exId}`, () => {
@@ -274,7 +275,7 @@ module.exports = module.exports = {
                 // Init search with custom callback
                 search.init(function () {
                     me.makeSearch(this.geoJSON.features[0].geometry, true)
-                }, "ejendom-custom-search");
+                }, ".ejendom-custom-search");
 
 
                 // Handle click events on map
@@ -287,8 +288,7 @@ module.exports = module.exports = {
                     var event = new geocloud.clickEvent(e, cloud);
                     if (clicktimer) {
                         clearTimeout(clicktimer);
-                    }
-                    else {
+                    } else {
                         if (me.state.active === false) {
                             return;
                         }
@@ -318,10 +318,15 @@ module.exports = module.exports = {
                 return (
 
                     <div role="tabpanel">
-                        <div id="conflict-places" className="places" style={this.marginBottomXl}>
-                            <input id="ejendom-custom-search"
-                                   className="ejendom-custom-search typeahead" type="text"
-                                   placeholder="Adresse eller matrikelnr."/>
+                        <div id="conflict-places" className="places">
+                            <div className="input-group mb-3">
+                                <input
+                                    className="typeahead form-control ejendom-custom-search" type="text"
+                                    placeholder="Adresse eller matrikelnr."/>
+                                <button className="btn btn-outline-secondary searchclear" type="button">
+                                    <i className="bi bi-x-lg"></i>
+                                </button>
+                            </div>
                         </div>
                         {
                             this.state.tlVisible
