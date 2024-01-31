@@ -372,7 +372,7 @@ module.exports = module.exports = {
             }
         }
 
-        utils.createMainTab(exId, "Ejendom", "Se Samlede Faste Ejendomme. Aktiver 'Klik i kortet' og klik hvor du vil fremsøge ejendommen. Eller søg på adresse eller matrikelnr. I tabellen vises hvilke jordstykker ejendommen består af. ", require('./../../../browser/modules/height')().max, "home", false, exId);
+        utils.createMainTab(exId, "Ejendom", "Se Samlede Faste Ejendomme. Aktiver 'Klik i kortet' og klik hvor du vil fremsøge ejendommen. Eller søg på adresse eller matrikelnr. I tabellen vises hvilke jordstykker ejendommen består af. ", require('./../../../browser/modules/height')().max, "bi bi-house-door", false, exId);
 
         // Append to DOM
         //==============
